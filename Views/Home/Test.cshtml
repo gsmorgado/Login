@@ -1,0 +1,46 @@
+﻿@model Login.Models.Test
+@{
+    ViewData["Title"] = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="row mt-5">
+        <div class="col-sm-4 offset-sm-4">
+            <form asp-controller= "Home" asp-action="Test" method="post">
+              <h3 class="text-center text-info">Convertir número a letras</h3>
+               <div class="row p-3 border-0">
+                  <div asp-validation-summary="ModelOnly" class="text-danger"></div> 
+                </div>
+              <div class="mb-3">
+                <label class="form-label">Numero</label>
+                <input type="text" class="form-control" asp-for="Numero"> 
+                <span asp-validation-for="Numero" class="text-danger"></span>
+              </div>
+              <div class="mb-3">
+                <label  class="form-label">Letra:</label>
+                <label  class="form-label">@ViewBag.letra </label>                
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Convertir</button>
+            </form>
+        </div>
+
+        <div class="mt-4">
+			<div class="d-flex justify-content-center links">
+				 <a href="@Url.Action("Test", "Home")" class="ml-2">Limpiar</a>
+			</div>			
+		</div>
+
+
+    </div>
+     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
