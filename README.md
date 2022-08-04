@@ -1,15 +1,15 @@
 #  Project Login
 
 
-Table of Contents
-- [Descripcion](#descripcion)
+Tabla de Contenido
+- [Descripción](#descripcion)
 - [Requerimientos](#requerimientos)
-- [Instalacion](#instalacion)
+- [Instalación](#instalacion)
 
-## Descripcion
+## Descripción
 - Proyecto Web ASP Net core 6 
 - Registra usuarios BD SQL server
-- Convierte numeros a letras
+- Convierte números a letras
 
 ## Requerimientos
 Packages:
@@ -21,7 +21,7 @@ Install-Package Serilog.AspNetCore
 Install-Package Serilog.Settings.Configuration
 Install-Package Serilog.Sinks.MSSqlServer
 
-## Instalacion
+## Instalación
 1. Crear base de datos: Ejecutar script: query_db
 2. Instalar paquetes si es necesario, los mencionados arriba
 3. Cambiar la cadena de conexión a la BD
