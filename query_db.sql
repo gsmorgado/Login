@@ -1,7 +1,7 @@
 
 ---execute query to create DB Login 
 
-CREATE DATABASE LOGIN
+CREATE DATABASE Login
 
 USE [Login]
 GO
