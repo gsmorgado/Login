@@ -36,9 +36,15 @@ namespace Login.Controllers
         /// <returns></returns>
         [HttpPost]
         public ActionResult Test(Test _test)
-        {            
+        {
+            if (_test.Numero > 0)
+            {
                 ViewBag.letra = ConvertirNumLetras(_test.Numero);
-                return View();     
+            }
+            else {
+                ViewData["Mensaje"] = "Solo números postivos!";
+            }
+            return View();     
 
         }
         /// <summary>
@@ -190,9 +196,10 @@ namespace Login.Controllers
                         break;
                     case < 1000:
                         numeroResta = number % 100;
+                        // se obtiene el valor entero
                         newnumber = number - numeroResta;
-                        if (newnumber == 100) { resultado = "ciento " + " " + ConvertirNumLetras(numeroResta); }
-                        else { resultado = ConvertirNumLetras(newnumber) + " " + ConvertirNumLetras(numeroResta); }
+                        if (newnumber == 100) { resultado = "ciento " + " " + ConvertirNumLetras(numeroResta); } // ciento..uno..etc
+                        else { resultado = ConvertirNumLetras(newnumber) + " " + ConvertirNumLetras(numeroResta); } // mayor que doscientos menor que mil
                         break;
                     case 1000:
                         resultado = "mil";
@@ -202,11 +209,11 @@ namespace Login.Controllers
                         numeroResta = number % 1000;
                         newnumber = number - numeroResta;
 
-                        if (number / 1000 == 1) { resultado = " mil " + ConvertirNumLetras(numeroResta); }
+                        if (number / 1000 == 1) { resultado = " mil " + ConvertirNumLetras(numeroResta); } // mil..uno..etc
                         else
                         {
-                            if (numeroResta == 0) { resultado = ConvertirNumLetras(number / 1000) + " mil "; }
-                            else { resultado = ConvertirNumLetras(number / 1000) + " mil " + ConvertirNumLetras(numeroResta); }
+                            if (numeroResta == 0) { resultado = ConvertirNumLetras(number / 1000) + " mil "; } // mayor que mil menor que un millon... dos mil .. tres mil.etc
+                            else { resultado = ConvertirNumLetras(number / 1000) + " mil " + ConvertirNumLetras(numeroResta); } // 2345
                         }
 
                         break;
@@ -215,15 +222,30 @@ namespace Login.Controllers
                         break;
                     case < 2000000:
                         numeroResta = number % 1000000;
-                        resultado = "un millon " + ConvertirNumLetras(numeroResta);
+                        resultado = "un millon " + ConvertirNumLetras(numeroResta); 
                         break;
                     case < 1000000000000:
                         numeroResta = number % 1000000;
                         newnumber = number - numeroResta;
-                        if (numeroResta == 0) { resultado = ConvertirNumLetras(number / 1000000) + " millones "; }
-                        else { resultado = ConvertirNumLetras(number / 1000000) + " millones " + ConvertirNumLetras(numeroResta); }
-
+                        if (numeroResta == 0) { resultado = ConvertirNumLetras(number / 1000000) + " millones "; } // 2 000 000 
+                        else { resultado = ConvertirNumLetras(number / 1000000) + " millones " + ConvertirNumLetras(numeroResta); } // 2345000,  99,999,999.. 999,999,999
                         break;
+                    case 1000000000000:
+                        resultado = " un billon";
+                        break;
+                    case < 2000000000000:
+                        numeroResta = number % 1000000000000;
+                        resultado = "un billon " + ConvertirNumLetras(numeroResta);
+                        break;
+                    case < 10000000000000:
+                        numeroResta = number % 1000000000000;
+                        newnumber = number - numeroResta;
+                        if (numeroResta == 0) { resultado = ConvertirNumLetras(number / 1000000000000) + " billones "; } // 2 000 000 000 000
+                        else { resultado = ConvertirNumLetras(number / 1000000000000) + " billones " + ConvertirNumLetras(numeroResta); } //   9,999,999,999,999
+                        break;
+                    default:
+                        break;
+
                 }
 
             }

@@ -20,9 +20,18 @@
                 </div>
               <div class="mb-3">
                 <label class="form-label">Numero</label>
-                <input type="text" class="form-control" asp-for="Numero"> 
-                <span asp-validation-for="Numero" class="text-danger"></span>
+                <input type="number" required class="form-control" asp-for="Numero"> 
+                <span asp-validation-for="Numero" class="text-danger" ></span>
               </div>
+             
+                @if (ViewData["Mensaje"] != null)
+                {
+                  <div class="alert alert-danger" role="alert">
+                    @ViewData["Mensaje"] 
+                 </div>                    
+                }
+               
+
               <div class="mb-3">
                 <label  class="form-label">Letra:</label>
                 <label  class="form-label">@ViewBag.letra </label>                
